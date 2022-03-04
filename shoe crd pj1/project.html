@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="shoecrdpj.css">
+    <link rel="stylesheet" href="\all.css">
+</head>
+
+<body>
+
+    <div class="min">
+        <button class="bars" id="bars"><i class="fas fa-bars "></i></button>
+        <div class="menubr" id="menubar">
+            <button class="remove" id="remove">&times;</button>
+            <div class="submenu">
+                <div class="child"><a href="#"> Home</a></div>
+                <div class="child"><a href="#"> About Us</a></div>
+                <div class="child"><a href="#"> Orders</a></div>
+                <div class="child"><a href="#"> Winners</a></div>
+                <div class="child"><a href="#"> Contact Us</a></div>
+            </div>
+
+
+        </div>
+        <button class="phone"><i class="fas fa-phone"></i></button>
+        <div class="logo">
+
+            <i class="fas fa-shoe-prints"></i>
+            <h1>shoe are us</h1>
+            <p>find the right for us</p>
+        </div>
+
+
+        <main>
+
+            <div class="cont" id="cont">
+                <div class="slider" id="slider">
+                    <div class="slide">
+                        <img src="img1-removebg-preview.png" alt="">
+                        <h1>Performance</h1>
+                        <a href="">learn more</a>
+                    </div>
+                    <div class="slide">
+                        <img src="img2-removebg-preview.png" alt="">
+                        <h1>Performance</h1>
+                        <a href="">learn more</a>
+                    </div>
+                    <div class="slide">
+                        <img src="img3-removebg-preview.png" alt="">
+                        <h1>Performance</h1>
+                        <a href="">learn more</a>
+                    </div>
+                    <div class="slide">
+                        <img src="img4-removebg-preview.png" alt="">
+                        <h1>Performance</h1>
+                        <a href="">learn more</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <i class="fas fa-chevron-left" id="left"></i>
+
+            <i class="fas fa-chevron-right" id="right"></i>
+
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="minpointer" id="minpointer">
+            <div class="childpointer" id=childpointer></div>
+            <div class="childpointer" id=childpointer></div>
+            <div class="childpointer" id=childpointer></div>
+            <div class="childpointer" id=childpointer></div>
+
+
+
+        </div>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+    <script>
+        let leftbtn = document.getElementById("left");
+        let rightbtn = document.getElementById("right");
+        let cont = document.getElementById("cont");
+        let slider = document.getElementById("slider");
+        let bars = document.getElementById("bars");
+        let menubar = document.getElementById("menubar")
+        let remove = document.getElementById("remove")
+        let minpointer1 = document.getElementById("minpointer")
+        let childpointer = document.querySelectorAll("#childpointer")
+        var index = 0;
+        let colours = ["rgb(106,173,230)", "rgb(46,88,179)", "rgb(125,66,184)", "rgb(106,173,230)"]
+
+        document.body.style.backgroundColor = colours[index]
+
+        bars.addEventListener("click", () => {
+            menubar.classList.toggle("active");
+            leftbtn.classList.toggle("active");
+        })
+        remove.addEventListener("click", () => {
+            menubar.classList.remove("active");
+            leftbtn.classList.remove("active");
+        })
+
+        childpointer[index].classList.add("active")
+
+
+
+
+        leftbtn.addEventListener('click', () => {
+            childpointer[index].classList.remove("active")
+            index--
+            if (index < 0) {
+                index = 3
+            }
+            updte();
+
+        })
+        rightbtn.addEventListener('click', () => {
+            childpointer[index].classList.remove("active")
+
+            index++
+            if (index > 3) {
+                index = 0
+            }
+            updte();
+
+        });
+
+
+
+        function updte() {
+
+            childpointer[index].classList.add("active")
+            slider.style.transform = "translateX(-" + index * 25 + "%)";
+
+            document.body.style.backgroundColor = colours[index]
+        };
+
+        function mover() {
+            childpointer[index].classList.remove("active")
+            index++
+            if (index > 3) {
+                index = 0
+            }
+            slider.style.transform = "translateX(-" + index * 25 + "%)";
+            childpointer[index].classList.add("active")
+            document.body.style.backgroundColor = colours[index];
+
+        }
+        setInterval(mover, 1500)
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
